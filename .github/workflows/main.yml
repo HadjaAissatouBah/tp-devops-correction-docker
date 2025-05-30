@@ -25,7 +25,7 @@ jobs:
         run: mvn clean verify
       
       - name: Sonar Cloud integration
-        run: mvn -B verify sonar:sonar -Dsonar.projectKey=tp-devops-2025_tp-devops-correction-docker -Dsonar.organization=tp-devops-2025 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./simple-api/pom.xml
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=HadjaAissatouBah_tp-devops-correction-docker -Dsonar.organization=hadjaaissatou -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./simple-api/pom.xml
 
 
   build-and-push-docker-image:
