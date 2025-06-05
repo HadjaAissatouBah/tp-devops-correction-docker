@@ -85,6 +85,7 @@ jobs:
 
       - name: Add known_hosts
         run: |
+          mkdir -p ~/.ssh
           ssh-keyscan -H hadja-aissatou.bah.takima.cloud >> ~/.ssh/known_hosts
 
       - name: Run Ansible Playbook
