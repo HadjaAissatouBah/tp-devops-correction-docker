@@ -88,6 +88,19 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H hadja-aissatou.bah.takima.cloud >> ~/.ssh/known_hosts
 
+      - name: Créer le fichier .env.yml depuis les secrets
+        run: |
+          cat <<EOF > .env.yml
+          SPRING_DATASOURCE_URL: "${{ secrets.SPRING_DATASOURCE_URL }}"
+          SPRING_DATASOURCE_USERNAME: "${{ secrets.SPRING_DATASOURCE_USERNAME }}"
+          SPRING_DATASOURCE_PASSWORD: "${{ secrets.SPRING_DATASOURCE_PASSWORD }}"
+          POSTGRES_USER: "${{ secrets.POSTGRES_USER }}"
+          POSTGRES_PASSWORD: "${{ secrets.POSTGRES_PASSWORD }}"
+          POSTGRES_DB: "${{ secrets.POSTGRES_DB }}"
+          APP_PORT: "${{ secrets.APP_PORT }}"
+          PROXY_PORT: "${{ secrets.PROXY_PORT }}"
+          EOF
+
       - name: Run Ansible Playbook
         run: |
           ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml
