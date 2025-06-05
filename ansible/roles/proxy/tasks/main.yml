@@ -10,6 +10,9 @@
   docker_container:
     name: httpd
     image: hadjabah/tp-devops-httpd:latest
+    pull: true
+    recreate: true
+    force_kill: true
     ports:
       - "{{ env_vars.PROXY_PORT }}:80"
     networks:
