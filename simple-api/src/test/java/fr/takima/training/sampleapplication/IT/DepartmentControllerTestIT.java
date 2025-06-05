@@ -51,7 +51,7 @@ class DepartmentControllerTestIT {
     @Test
     @Sql({"/InsertData.sql"})
     void testGetNonExistingDepartmentStudentsByName() throws Exception {
-        mockMvc.perform(get("/department/NIMPORTEQUOI/students"))
+        mockMvc.perform(get("/departments/NIMPORTEQUOI/students"))
                 .andExpect(status().isNotFound());
     }
 
