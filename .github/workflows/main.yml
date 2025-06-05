@@ -61,6 +61,7 @@ jobs:
           push: ${{ github.ref == 'refs/heads/main' }}
 
   deploy:
+    needs: build-and-push-docker-image
     runs-on: ubuntu-latest
 
     steps:
@@ -82,6 +83,11 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 400 ~/.ssh/id_rsa
+      
+      - name: Set up SSH key
+        run: |
+          echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > id_rsa
+          chmod 600 id_rsa
 
       - name: Add known_hosts
         run: |
