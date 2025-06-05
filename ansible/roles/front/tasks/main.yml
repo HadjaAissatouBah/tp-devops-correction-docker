@@ -1,0 +1,9 @@
+- name: Run frontend container
+  docker_container:
+    name: front
+    image: hadjabah/tp-devops-frontend:latest
+    pull: true
+    recreate: true
+    force_kill: true
+    networks:
+      - name: app_network
