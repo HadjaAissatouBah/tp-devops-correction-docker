@@ -1,0 +1,24 @@
+- name: Load environment variables
+  include_vars:
+    file: "{{ playbook_dir }}/../.env.yml"
+    name: env_vars
+
+- name: Run database container
+  docker_container:
+    name: database
+    image: hadjabah/tp-devops-database:latest
+    networks:
+      - name: app_network
+    env:
+      POSTGRES_USER: "{{ env_vars.POSTGRES_USER }}"
+      POSTGRES_PASSWORD: "{{ env_vars.POSTGRES_PASSWORD }}"
+      POSTGRES_DB: "{{ env_vars.POSTGRES_DB }}"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+
+
+
+

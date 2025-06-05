@@ -1,0 +1,19 @@
+---
+# tasks file for roles/proxy
+
+- name: Load environment variables
+  include_vars:
+    file: "{{ playbook_dir }}/../.env.yml"
+    name: env_vars
+
+- name: Run HTTP proxy container
+  docker_container:
+    name: httpd
+    image: hadjabah/tp-devops-httpd:latest
+    ports:
+      - "{{ env_vars.PROXY_PORT }}:80"
+    networks:
+      - name: app_network
+
+
+
