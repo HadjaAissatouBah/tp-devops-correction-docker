@@ -1,7 +1,7 @@
 - name: Run frontend container
   docker_container:
     name: front
-    image: hadjabah/tp-devops-frontend:latest
+    image: hadjabah/tp-devops-front:latest
     pull: true
     recreate: true
     force_kill: true
