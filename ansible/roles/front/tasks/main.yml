@@ -5,5 +5,8 @@
     pull: true
     recreate: true
     force_kill: true
+    pull: true
+    recreate: true
+    force_kill: true
     networks:
       - name: app_network
