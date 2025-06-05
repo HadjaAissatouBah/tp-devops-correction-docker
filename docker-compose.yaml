@@ -24,7 +24,7 @@ services:
     networks:
       - my-network
 
-  frontend:
+  front:
     build: "devops-front-main"
     depends on :
       - simple-api
